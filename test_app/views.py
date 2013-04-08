@@ -13,6 +13,10 @@ class ClassBCreateView(CreateView):
 		self.the_foreignkey = kwargs.get('the_foreignkey') # get foreign key out of url
 		return super(ClassBCreateView, self).get(request, *args, **kwargs)
 
+	def post(self, request, *args, **kwargs):
+		self.the_foreignkey = kwargs.get('the_foreignkey') # get foreign key out of url
+		return super(ClassBCreateView, self).post(request, *args, **kwargs)
+
 	def get_form_kwargs(self):
 		kwargs = super(ClassBCreateView, self).get_form_kwargs()
 		kwargs.update({'the_foreignkey': getattr(self, 'the_foreignkey', 0)}) # put the foreign key into the form kwargs
